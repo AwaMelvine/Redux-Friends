@@ -12,20 +12,21 @@ const LoginForm = styled.form`
 
 class Login extends Component {
   state = {
-    username: "",
-    password: ""
+    username: "Lambda",
+    password: "school"
   };
 
   change = e => this.setState({ [e.target.name]: e.target.value });
 
-  submit = e => {
+  submit = async e => {
     e.preventDefault();
     this.props.loginUser(this.state);
     this.setState({ username: "", password: "" });
+    this.props.history.push("/");
   };
 
   render() {
-    const { username, password } = this.props;
+    const { username, password } = this.state;
     return (
       <LoginForm method="post" onSubmit={this.submit}>
         <input
@@ -48,9 +49,12 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  loggingIn: state.auth.loggingIn
-});
+const mapStateToProps = state => {
+  return {
+    loggingIn: state.auth.loggingIn,
+    loggedIn: state.auth.loggedIn
+  };
+};
 
 export default connect(
   mapStateToProps,
