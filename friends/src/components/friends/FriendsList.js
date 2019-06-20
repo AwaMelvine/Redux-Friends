@@ -19,7 +19,7 @@ class FriendsList extends Component {
   }
 }
 
-const mapStateToProps = state => ({ friends: state.friends });
+const mapStateToProps = state => ({ friends: state.friends.friends });
 
 export default connect(
   mapStateToProps,
