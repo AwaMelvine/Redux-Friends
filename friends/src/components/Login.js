@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { loginUser } from "../actions/authActions";
 
 const LoginForm = styled.form`
   input,
@@ -16,12 +18,16 @@ class Login extends Component {
 
   change = e => this.setState({ [e.target.name]: e.target.value });
 
-  submit = e => console.log(this.state);
+  submit = e => {
+    e.preventDefault();
+    this.props.loginUser(this.state);
+    this.setState({ username: "", password: "" });
+  };
 
   render() {
     const { username, password } = this.props;
     return (
-      <LoginForm onSubmit={this.submit}>
+      <LoginForm method="post" onSubmit={this.submit}>
         <input
           type="text"
           name="username"
@@ -33,7 +39,7 @@ class Login extends Component {
           type="password"
           name="password"
           value={password}
-          onChange={this.submit}
+          onChange={this.change}
           placeholder="Password"
         />
         <button type="submit">Login</button>
@@ -41,4 +47,12 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+const mapStateToProps = state => ({
+  loggingIn: state.auth.loggingIn
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

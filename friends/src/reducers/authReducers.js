@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loggedIn: action.payload
+        loggedIn: true
       };
     case LOGIN_FAILURE:
       return {
@@ -26,6 +26,6 @@ export default (state = initialState, action) => {
       };
 
     default:
-      break;
+      return state;
   }
 };

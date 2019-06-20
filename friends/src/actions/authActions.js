@@ -1,7 +1,7 @@
 import { LOGGING_IN, LOGIN_FAILURE, LOGIN_SUCCESS } from "./types";
 import axios from "axios";
 
-const baseUrl = "http://localhost:5000/api/";
+const baseUrl = "http://localhost:5000/api";
 
 const loggingIn = status => ({
   type: LOGGING_IN,
