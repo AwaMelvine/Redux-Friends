@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+const LoginForm = styled.form`
+  input,
+  button {
+    display: block;
+  }
+`;
 
 class Login extends Component {
   state = {
@@ -13,7 +21,7 @@ class Login extends Component {
   render() {
     const { username, password } = this.props;
     return (
-      <form onSubmit={this.submit}>
+      <LoginForm onSubmit={this.submit}>
         <input
           type="text"
           name="username"
@@ -29,7 +37,7 @@ class Login extends Component {
           placeholder="Password"
         />
         <button type="submit">Login</button>
-      </form>
+      </LoginForm>
     );
   }
 }
