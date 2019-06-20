@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Friend from "./Friend";
 import { fetchFriends } from "../../actions/friendsActions";
 
+
 class FriendsList extends Component {
   componentDidMount() {
     this.props.fetchFriends();
