@@ -22,7 +22,7 @@ export const loginUser = credentials => dispatch => {
   axios
     .post(`${baseUrl}/login`, credentials)
     .then(res => {
-      localStorage.setItem("token", JSON.stringify(res.data.payload));
+      localStorage.setItem("token", res.data.payload);
       dispatch(loginSuccess());
     })
     .catch(err => dispatch(loginFailure(err.message)))
